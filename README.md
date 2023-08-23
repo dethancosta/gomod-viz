@@ -3,7 +3,7 @@
 A CLI tool that lets you visualize the dependency graph of your project.
 
 ## Requirements
-This tool requires you to have go and graphviz installed, in order to generate the svg file.
+This tool requires you to have [Go](https://go.dev/doc/install) and [graphviz](https://graphviz.org/download/) installed, in order to generate the svg file.
 It currently only works on Unix-like (Mac, Linux) systems
 
 ## Installation and Usage
