@@ -10,7 +10,7 @@ import (
 	"github.com/dominikbraun/graph/draw"
 )
 
-const gvFileName = "go-mod-graph.gv"
+const gvFileName = "go-mod-graph"
 
 func main() {
 	cmd := exec.Command("go", "mod", "graph")
@@ -41,15 +41,20 @@ func main() {
 		draw.GraphAttribute("normalize", "true"),
 	)
 	CheckError(err)
+	
 	//TODO only open the svg if -o flag is given
 	//neato puts the current project's node in the centre
 	cmd = exec.Command("dot", "-Tsvg", "-Kneato", "-O", gvFileName)
 	out, err = cmd.Output()
 	CheckError(err)
+	
 	cmd = exec.Command("open", gvFileName + ".svg")
 	out, err = cmd.Output()
 	CheckError(err)
-	
+
+	cmd = exec.Command("rm", gvFileName)
+	out, err = cmd.Output()
+	CheckError(err)
 }
 
 func CheckError(err error) {
